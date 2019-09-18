@@ -5,6 +5,8 @@ title: "Trabajo Curso R UBA"
 author: "Marilina Santero"
 date: "18/9/2019"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -23,3 +25,28 @@ La Unidad de Registro, Sistematización y Seguimiento de Femicidios y Homicidios
 
 
 La pregunta que nos interesa responder es: __¿Cómo o cuánto es la diferencia en femicidios entre las regiones de Argentina?__
+```{r}
+femicidios <- read.csv('http://datos.jus.gob.ar/dataset/27bb9b2c-521b-406c-bdf9-98110ef73f34/resource/583cec9a-3022-4234-8b32-17692a267aac/download/registro-de-femicidios-20190909.csv')
+
+dim(femicidios)
+
+names(femicidios)
+
+head(femicidios)
+
+
+
+```
+
+
+Voy a realizar una exploración gráfica que nos muestre a cuanto ascienden los femicidios en cada provincia durante 2012-2019:
+
+
+
+```{r}
+ggplot(femicidios) +
+    geom_col(aes(x = factor(hecho_provincia), y = "" ))+
+  labs(x = "Provincias",y = "Casos Femicidios") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+```
